@@ -1,0 +1,123 @@
+:root {
+    font-size: 16px;
+    font-family: 'Open Sans';
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+}
+
+body {
+    color: black;
+    background-color:#2a2b33;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin-left: 5rem;
+    height: 100%; 
+    width:auto; 
+    /*margin: 0;*/
+}
+
+#map {
+    width: 100%; 
+    height: 100%; 
+    background-color: #000000;
+}
+
+.navbar {
+    width:5rem;
+    height:100vh;
+    position: fixed;
+    transition: 200ms ease;
+}
+
+.navbar-nav {
+    list-style: none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:center;
+    height:100vh;
+}
+
+.nav-item {
+    width:100%;
+    height:60px;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
+}
+
+.nav-item:hover {
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+}
+
+.nav-item:last-child {
+    margin-top:auto;
+}
+
+.nav-link {
+
+}
+
+.nav-link:hover {
+  
+}
+
+.nav-link svg {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+    padding-top:10px;
+}
+
+.d {
+    transition: var(--transition-speed);
+}
+
+.animated-icon {
+    width: 20px;
+    height:20px;
+    transition: var(--transition-speed);
+    /*border:2px solid blue;*/
+}
+
+/*=================
+Toolbar
+=================*/
+
+.info-toolbar {background-color: #FFFFFF;  display: flex; align-items: center; overflow: hidden; width:fit-content; height:80px; font-family: Arial, Helvetica, sans-serif; border-radius: 16px; text-align: left;}
+.info-toolbar h2 {color:#3A434F; letter-spacing: -1px;}
+.info-toolbar p {color:#A2A6AA; margin-left:0px;}
+#icon-block-1 {background-color: #E5E8EB; width:54px; height:54px; float:left; margin-left:14px; border-radius: 12px; display: flex; align-items: center; justify-content: center;}
+#icon-block-2 {line-height: 2px; float:left; margin-left:14px;}
+#icon-block-3 {background-color: #FCF3E8; width:54px; height:54px; overflow: hidden; margin-left:60px; margin-right:14px; border-radius: 12px; display: flex; align-items: center; justify-content: center; transition: all .18s ease-out;}
+#icon-block-3:hover {background-color: #FCDEB8;}
+.svg-icon {margin-left:auto; margin-right: auto;}
+
+/*=================
+Sizeable Icons
+=================*/
+
+.animatedZoom {width:20px; height:20px; background-color: red;/*background-image:url("icons/mist2.gif"); background-size: 160px 160px;*/}
+.zoom3 .animatedZoom {width:20px; height:20px; background-color: red;}
+.zoom4 .animatedZoom {width:40px; height:40px; background-color: orange;}
+.zoom5 .animatedZoom {width:80px; height:80px; background-color: yellow;}
+.zoom6 .animatedZoom {width:100px; height:100px; background-color: green;}
+
+.CloudType1 {width:1221px; height:843px; opacity: 0.8; /*background-color: red;*/ pointer-events: none !important;} 
+.zoom3 .CloudType1 {opacity: 0.6;}
+.zoom4 .CloudType1 {opacity: 0.4;}
+.zoom5 .CloudType1 {opacity: 0.2;}
+.zoom6 .CloudType1 {opacity: 0.1;}
+
+.CloudType2 {width:458px; height:427px; opacity: 0.9; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType2 {opacity: 0.9;}
+.zoom4 .CloudType2 {opacity: 0.7;}
+.zoom5 .CloudType2 {opacity: 0.5;}
+.zoom6 .CloudType2 {opacity: 0.3;}

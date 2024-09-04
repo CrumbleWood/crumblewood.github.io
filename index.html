@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<script defer src="theme.js"></script>
+    <title>Worldmap Tabletop RPG</title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://www.legendkeeper.com/favicon.ico" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Palanquin+Dark">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="scripts/leaflet.css">
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="scripts/leaflet.js"></script>
+
+    <!-- Plugin Scripts -->
+    <script src="scripts-plugins/Leaflet.Marker.Parallax.js"></script>
+
+    <style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg id="a" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 30 32">
+                        <defs>
+                            <style>.c{fill:#fff;}.d{fill:#358ed8;}</style>
+                        </defs>
+                        <g>
+                            <path class="c" d="m15,29.79c-4.03-3.51-11.88-11.38-11.88-16.41C3.12,6.83,8.45,1.5,15,1.5s11.88,5.33,11.88,11.88c0,5.04-7.85,12.9-11.88,16.41Z"/>
+                            <path d="m15,3c5.72,0,10.38,4.66,10.38,10.38,0,3.61-5.57,10.06-10.38,14.41-4.81-4.35-10.38-10.8-10.38-14.41,0-5.72,4.66-10.38,10.38-10.38M15,0h0C7.61,0,1.62,5.99,1.62,13.38h0c0,7.39,13.38,18.38,13.38,18.38h0s13.38-10.99,13.38-18.38h0C28.38,5.99,22.39,0,15,0h0Z"/>
+                        </g>
+                        <path class="d" d="m8.06,13.41h0c0-3.84,3.11-6.94,6.94-6.94h0c3.84,0,6.94,3.11,6.94,6.94h0c0,3.84-6.94,9.54-6.94,9.54h0s-6.94-5.7-6.94-9.54Z"/>
+                    </svg>
+                    <!--<span class="link-text">ITEM1</span>-->
+                </a> 
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg id="a" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 30 32">
+                        <defs>
+                            <style>.c{fill:#fff;}.d{fill:#358ed8;}</style>
+                        </defs>
+                        <g>
+                            <path class="c" d="m15,29.79c-4.03-3.51-11.88-11.38-11.88-16.41C3.12,6.83,8.45,1.5,15,1.5s11.88,5.33,11.88,11.88c0,5.04-7.85,12.9-11.88,16.41Z"/>
+                            <path d="m15,3c5.72,0,10.38,4.66,10.38,10.38,0,3.61-5.57,10.06-10.38,14.41-4.81-4.35-10.38-10.8-10.38-14.41,0-5.72,4.66-10.38,10.38-10.38M15,0h0C7.61,0,1.62,5.99,1.62,13.38h0c0,7.39,13.38,18.38,13.38,18.38h0s13.38-10.99,13.38-18.38h0C28.38,5.99,22.39,0,15,0h0Z"/>
+                        </g>
+                        <path class="d" d="m8.06,13.41h0c0-3.84,3.11-6.94,6.94-6.94h0c3.84,0,6.94,3.11,6.94,6.94h0c0,3.84-6.94,9.54-6.94,9.54h0s-6.94-5.7-6.94-9.54Z"/>
+                    </svg>
+                </a> 
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <svg id="a" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 30 32">
+                        <defs>
+                            <style>.c{fill:#fff;}.d{fill:#358ed8;}</style>
+                        </defs>
+                        <g>
+                            <path class="c" d="m15,29.79c-4.03-3.51-11.88-11.38-11.88-16.41C3.12,6.83,8.45,1.5,15,1.5s11.88,5.33,11.88,11.88c0,5.04-7.85,12.9-11.88,16.41Z"/>
+                            <path d="m15,3c5.72,0,10.38,4.66,10.38,10.38,0,3.61-5.57,10.06-10.38,14.41-4.81-4.35-10.38-10.8-10.38-14.41,0-5.72,4.66-10.38,10.38-10.38M15,0h0C7.61,0,1.62,5.99,1.62,13.38h0c0,7.39,13.38,18.38,13.38,18.38h0s13.38-10.99,13.38-18.38h0C28.38,5.99,22.39,0,15,0h0Z"/>
+                        </g>
+                        <path class="d" d="m8.06,13.41h0c0-3.84,3.11-6.94,6.94-6.94h0c3.84,0,6.94,3.11,6.94,6.94h0c0,3.84-6.94,9.54-6.94,9.54h0s-6.94-5.7-6.94-9.54Z"/>
+                    </svg>
+                    <!--<span class="link-text">ITEM3</span>-->
+                </a> 
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+    <div id="map"></div>
+    <script type="text/javascript">
+
+    // Bounds
+    var corner1 = L.latLng(85.012, -179.824),
+    corner2 = L.latLng(-85.057, 179.648),
+    bounds = L.latLngBounds(corner1, corner2);
+
+    var center = {lat: 0, lng: 0};
+    
+    //Creating the Map
+    var map = L.map('map', {}).setView(center, 3).setMaxBounds([corner1,corner2]);
+    var basemap = L.tileLayer('map/{z}/{x}/{y}.jpg', {
+    /*var basemap = L.tileLayer('map/{z}/{x}/{y}.jpg', {*/
+        tileSize: 256,
+        maxZoom : 6,
+        subdomains: 'abcd',
+        minZoom : 3,
+        zIndex: 1,
+        continuousWorld: false,
+        noWrap: true,
+        updateWhenIdle: true
+    }).addTo(map);
+
+    map.fitBounds([
+        [corner1],
+        [corner2]
+    ]);
+
+
+    /*
+    var basemap = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+    var basemap = L.tileLayer('map/{z}/{x}/{y}.jpg', {
+        tileSize: 256,
+        continuousWorld: false,
+        noWrap: true,  
+        minZoom: 3,
+        maxZoom: 6,
+        subdomains: 'abcd'
+    }).addTo(map);
+
+    var map = L.map('map', {}).setView(center, 14);
+    var basemap = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+        tileSize: 256,
+        attribution: '<a href="https://www.mapzen.com/rights">Attribution</a>. Data &copy;<a href="https://openstreetmap.org/copyright">OSM</a> contributors.',
+        maxZoom : 19,
+        subdomains: 'abcd',
+        minZoom : 11,
+        zIndex: 1,
+        updateWhenIdle: false
+    }).addTo(map);
+    */
+
+    // Parallax Plugin
+    // var center = {lat: 0, lng: 0};
+
+    //Coordinate Finder
+    var marker = L.marker([0, 0], {draggable: true}).addTo(map);
+    marker.bindPopup('LatLng Marker').openPopup();
+    marker.on('dragend', function(e) {marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);});
+    
+    //Markers & Icons
+    var templeIconDarkblue = L.icon({
+        iconUrl: 'icons/icon-temple-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [50, 54], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [25, 54], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var forestIconDarkblue = L.icon({
+        iconUrl: 'icons/icon-forest-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [50, 54], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [25, 54], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var waterIconDarkblue = L.icon({
+        iconUrl: 'icons/icon-water-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [50, 54], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [25, 54], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var mountainIconDarkblue = L.icon({
+        iconUrl: 'icons/icon-mountain-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [50, 54], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [25, 54], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var royalIconDarkblue = L.icon({
+        iconUrl: 'icons/icon-royal-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [50, 54], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [25, 54], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerIconWater = L.icon({
+        iconUrl: 'icons/icon-banner-water.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [27, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerIconFire = L.icon({
+        iconUrl: 'icons/icon-banner-fire.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [27, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerIconEarth = L.icon({
+        iconUrl: 'icons/icon-banner-earth.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [27, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerIconAir = L.icon({
+        iconUrl: 'icons/icon-banner-air.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [27, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var IconMountain = L.icon({
+        iconUrl: 'icons/icon-mountain.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [32, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var IconWater = L.icon({
+        iconUrl: 'icons/icon-water.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [32, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var IconAnimal = L.icon({
+        iconUrl: 'icons/icon-animal.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [32, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var IconForest = L.icon({
+        iconUrl: 'icons/icon-forest.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [32, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var IconTemple = L.icon({
+        iconUrl: 'icons/icon-temple.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [32, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [13, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquareRed = L.icon({
+        iconUrl: 'icons/icon-square-red.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquareOrange = L.icon({
+        iconUrl: 'icons/icon-square-orange.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquareYellow = L.icon({
+        iconUrl: 'icons/icon-square-yellow.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquareGreen = L.icon({
+        iconUrl: 'icons/icon-square-green.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquareBlue = L.icon({
+        iconUrl: 'icons/icon-square-blue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquarePurple = L.icon({
+        iconUrl: 'icons/icon-square-purple.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerSquareDarkBlue = L.icon({
+        iconUrl: 'icons/icon-square-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerMarkerRed = L.icon({
+        iconUrl: 'icons/icon-marker-red.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0], // point from which the popup should open relative to the iconAnchor
+        className: 'animated-icon my-icon-id' 
+    });
+    var bannerMarkerOrange = L.icon({
+        iconUrl: 'icons/icon-marker-orange.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerMarkerYellow = L.icon({
+        iconUrl: 'icons/icon-marker-yellow.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerMarkerBlue = L.icon({
+        iconUrl: 'icons/icon-marker-blue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerMarkerGreen = L.icon({
+        iconUrl: 'icons/icon-marker-green.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var bannerMarkerDarkblue = L.icon({
+        iconUrl: 'icons/icon-marker-darkblue.svg',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [30, 32], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [15, 32], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var cloud = L.icon({
+        iconUrl: 'icons/cloud.png',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [152, 84], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [76, 42], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var icon = L.divIcon({
+        className: 'parallax-cloud big',
+        html: '<img src="icons/cloud.png" width="600" height="330">',
+        //shadowUrl: 'leaf-shadow.png',
+        iconSize:     [600, 330], // size of the icon
+        //shadowSize:   [50, 64], // size of the shadow
+        iconAnchor:   [300, 165] // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var iconZoom = L.divIcon({
+        className: 'animatedZoom',
+        //iconAnchor:   [80, 80], // point of the icon which will correspond to marker's location
+        //popupAnchor:  [0, 0], // point from which the popup should open relative to the iconAnchor
+        //iconSize: [null, null] // size of the icon
+        //shadowUrl: 'leaf-shadow.png',
+        //shadowSize:   [50, 64], // size of the shadow
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        
+    });
+    var iconCloud1 = L.icon({
+        className: 'CloudType1',
+        iconUrl: 'icons/cloud_type_1.png',
+        iconSize:     [1221, 843], // size of the icon
+        iconAnchor:   [610, 421], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var iconCloud2 = L.icon({
+        className: 'CloudType2',
+        iconUrl: 'icons/cloud_type_2.png',
+        iconSize:     [458, 427], // size of the icon
+        iconAnchor:   [229, 213], // point of the icon which will correspond to marker's location
+        //shadowUrl: 'leaf-shadow.png',
+        //shadowSize:   [50, 64], // size of the shadow
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    /*
+    var iconZoomLayer = L.layerGroup([
+        L.marker([-31.4 , 0], {icon:iconZoom})
+    ]).addTo(map);*/
+
+    var playerIcon = L.icon({ 
+        className: 'animatedZoom',
+        iconUrl: 'icons/cloud.png', /*Location of file to be used as icon.*/ 
+        //iconSize: [null, null], /* Size of icon on map.*/ 
+        iconAnchor:   [0, 0]
+    });
+
+    map.on('zoomend', function(){ 
+
+        // autoscale function based on css & zoom
+        /*var newzoom = '' + (10*(map.getZoom()+2)) +'px';
+        $('#map .animatedZoom').css({'width':newzoom,'height':newzoom,'background-size':newzoom + ' ' + newzoom}); 
+        console.log("newzoom: "+ newzoom);
+        //repeat for the other classes*/
+
+        //manual marker size based on zoom
+        /*if (map.getZoom() < 6) {
+            marker.setIcon(playerIcon1);
+        } else {
+            marker.setIcon(playerIcon2);
+        }*/
+
+        //change icon size based on css
+        document.body.className = "zoom"+map.getZoom();
+        
+    });
+    
+    var marker1 = L.marker([-30 , 0], {icon:playerIcon}).addTo(map);
+
+    /*
+    var cluster = L.markerClusterGroup({
+        spiderfyOnMaxZoom: false,
+        disableClusteringAtZoom: 17
+    }).addTo(map);
+
+    var marker1 = new L.marker(new L.LatLng(31.4926473, 74.3759229)).addTo(cluster);
+    var marker2 = new L.marker(new L.LatLng(31.4923959, 74.375927)).addTo(cluster);*/
+
+    var mistfallCity = L.marker([-35.012013, -3.88916], {icon: royalIconDarkblue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="bxs-Forest.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Mistfall</h2><p>Forest</p></b></div><a href="index.html" style="text-decoration:none"><div id="icon-block-3"><img src="bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Starhaven = L.marker([-2.28409, -45.527344], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="bxs-City.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Starhaven</h2><p>City</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        suncrestVillage = L.marker([-35.56788, -12.65625], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        longruneOutpost = L.marker([-32.6870, 9.42627], {icon: bannerSquareOrange}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        longruneCampsite = L.marker([-34.806347, 14.15039], {icon: bannerSquareYellow}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        longruneForest = L.marker([-34.39798, 11.33789], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        damrundMill = L.marker([-37.6141, -0.83496], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        woodlandForest = L.marker([-31.12254, -9.84375], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        whilderVillage = L.marker([-36.29641, -0.96680], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        greenrollHills = L.marker([-32.02653, 6.48193], {icon: IconMountain}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        whiterockPlateau = L.marker([-36.36720, -6.74561], {icon: IconMountain}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        
+        pevanshireTower = L.marker([-45.27460, 7.16309], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        minburyKeep = L.marker([-47.30836, 2.30713], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        minburyRavine = L.marker([-45.38271, 5.97656], {icon: IconMountain}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        minwoodForest = L.marker([-42.43996, 6.59180], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        southernMinwoodForest = L.marker([-48.82037, -0.39551], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        lostMill = L.marker([-44.43366, -6.94336], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        village = L.marker([-44.77775, -16.58936], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        outpost = L.marker([-44.21908, -1.27441], {icon: bannerSquareOrange}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
+        village = L.marker([-44.74336, -2.30713], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map);
+
+    //var center = {lat: 0, lng: 0};
+    var CloudMarker1 = L.Marker.parallax({lat: -30, lng: 0},{icon: iconCloud2, parallaxZoffset: 4096}).addTo(map),
+        CloudMarker2 = L.Marker.parallax({lat: -41, lng: -16},{icon: iconCloud2, parallaxZoffset: 4096}).addTo(map),
+        CloudMarker3 = L.Marker.parallax({lat: -49, lng: 5},{icon: iconCloud2, parallaxZoffset: 4096}).addTo(map),
+        CloudMarker4 = L.Marker.parallax({lat: -49, lng: -13},{icon: iconCloud1, parallaxZoffset: 16384}).addTo(map),
+        CloudMarker5 = L.Marker.parallax({lat: -30, lng: 0},{icon: iconCloud1, parallaxZoffset: 32768}).addTo(map);
+    //L.Marker.parallax(center,{ parallaxZoffset: 8192}).addTo(map);
+    //L.Marker.parallax(center,{ parallaxZoffset: 16384}).addTo(map);
+    //L.Marker.parallax(center,{ parallaxZoffset: 32768}).addTo(map);
+    //L.Marker.parallax(center,{ parallaxZoffset: 65536}).addTo(map);
+    //L.Marker.parallax(center,{ parallaxZoffset: 131072}).addTo(map);
+
+    var temples = L.layerGroup([]);
+    var nature = L.layerGroup([]);
+    var islands = L.layerGroup([]);
+    var mountains = L.layerGroup([]);
+    var tribes = L.layerGroup([]);
+  
+    // Layer Control
+    var overlayMaps = {};
+    var layerControl = L.control.layers(overlayMaps).addTo(map);
+    layerControl.addOverlay(temples, "Temples");
+    layerControl.addOverlay(islands, "Islands");
+    layerControl.addOverlay(mountains, "Mountains");
+    layerControl.addOverlay(tribes, "Tribes");
+  
+    </script>
+    </main>
+</body>
+</html>
