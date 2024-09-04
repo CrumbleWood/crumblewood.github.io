@@ -87,6 +87,8 @@ main {
     /*border:2px solid blue;*/
 }
 
+div.leaflet-bottom.leaflet-right {visibility: hidden;}
+
 /*=================
 Toolbar
 =================*/
@@ -110,14 +112,14 @@ Sizeable Icons
 .zoom5 .animatedZoom {width:80px; height:80px; background-color: yellow;}
 .zoom6 .animatedZoom {width:100px; height:100px; background-color: green;}
 
-.CloudType1 {width:1221px; height:843px; opacity: 0.8; /*background-color: red;*/ pointer-events: none !important;} 
-.zoom3 .CloudType1 {opacity: 0.6;}
+.CloudType1 {width:1221px; height:843px; opacity: 0.6; /*background-color: red;*/ pointer-events: none !important;} 
+.zoom3 .CloudType1 {opacity: 0.5;}
 .zoom4 .CloudType1 {opacity: 0.4;}
-.zoom5 .CloudType1 {opacity: 0.2;}
-.zoom6 .CloudType1 {opacity: 0.1;}
+.zoom5 .CloudType1 {opacity: 0.3;}
+.zoom6 .CloudType1 {opacity: 0.2;}
 
-.CloudType2 {width:458px; height:427px; opacity: 0.9; /*background-color: blue;*/ pointer-events: none !important;}
-.zoom3 .CloudType2 {opacity: 0.9;}
-.zoom4 .CloudType2 {opacity: 0.7;}
-.zoom5 .CloudType2 {opacity: 0.5;}
+.CloudType2 {width:458px; height:427px; opacity: 0.7; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType2 {opacity: 0.6;}
+.zoom4 .CloudType2 {opacity: 0.5;}
+.zoom5 .CloudType2 {opacity: 0.4;}
 .zoom6 .CloudType2 {opacity: 0.3;}
