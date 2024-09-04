@@ -130,7 +130,7 @@ Sizeable Icons
 .zoom3 .CloudType2 {opacity: 0.6;}
 .zoom4 .CloudType2 {opacity: 0.4;}
 .zoom5 .CloudType2 {opacity: 0.4;}
-.zoom6 .CloudType2 {opacity: 0.4; filter: contrast(200%) brightness(150%) invert(100%);}
+.zoom6 .CloudType2 {opacity: 0.4;}
 
 .CloudType3 {width:672px; height:540px; opacity: 0.7; /*background-color: blue;*/ pointer-events: none !important;}
 .zoom3 .CloudType3 {opacity: 0.6;}
@@ -149,6 +149,6 @@ Sizeable Icons
 .zoom5 .CloudType2Shadow {opacity: 0.1; filter:blur(10px);} 
 .zoom6 .CloudType2Shadow {opacity: 0.2;}
 
-.CloudType3Shadow {width:689px; height:555px; opacity: 0.8; /*background-color: blue;*/ pointer-events: none !important;}
-.zoom3 .CloudType3Shadow {opacity: 0.8;}
+.CloudType3Shadow {width:689px; height:555px; opacity: 0; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType3Shadow {opacity: 0.1;}
 .zoom5 .CloudType3Shadow {opacity: 0.2;}
