@@ -102,6 +102,13 @@ Toolbar
 #icon-block-3:hover {background-color: #FCDEB8;}
 .svg-icon {margin-left:auto; margin-right: auto;}
 
+@media only screen 
+    and (device-width: 390px) 
+    and (device-height: 844px) 
+    and (-webkit-device-pixel-ratio: 3) {
+        .svg-icon {height:20px; width:20px; margin-left:auto; margin-right: auto;}
+    }
+
 /*=================
 Sizeable Icons
 =================*/
@@ -112,14 +119,36 @@ Sizeable Icons
 .zoom5 .animatedZoom {width:80px; height:80px; background-color: yellow;}
 .zoom6 .animatedZoom {width:100px; height:100px; background-color: green;}
 
-.CloudType1 {width:1221px; height:843px; opacity: 0.6; /*background-color: red;*/ pointer-events: none !important;} 
-.zoom3 .CloudType1 {opacity: 0.5;}
+/* Cloud Icons Size Change */
+.CloudType1 {width:1221px; height:843px; opacity: 0.4; /*background-color: red;*/ pointer-events: none !important;} 
+.zoom3 .CloudType1 {opacity: 0.4;}
 .zoom4 .CloudType1 {opacity: 0.4;}
 .zoom5 .CloudType1 {opacity: 0.3;}
 .zoom6 .CloudType1 {opacity: 0.2;}
 
-.CloudType2 {width:458px; height:427px; opacity: 0.7; /*background-color: blue;*/ pointer-events: none !important;}
+.CloudType2 {width:458px; height:427px; opacity: 0.6; /*background-color: blue;*/ pointer-events: none !important;}
 .zoom3 .CloudType2 {opacity: 0.6;}
-.zoom4 .CloudType2 {opacity: 0.5;}
+.zoom4 .CloudType2 {opacity: 0.4;}
 .zoom5 .CloudType2 {opacity: 0.4;}
-.zoom6 .CloudType2 {opacity: 0.3;}
+.zoom6 .CloudType2 {opacity: 0.4;}
+
+.CloudType3 {width:672px; height:540px; opacity: 0.7; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType3 {opacity: 0.6;}
+.zoom4 .CloudType3 {opacity: 0.5;}
+.zoom5 .CloudType3 {opacity: 0.4;}
+.zoom6 .CloudType3 {opacity: 0.3;}
+
+/* Cloud Icons Shadows Size Change */
+.CloudType1Shadow {width:1239px; height:886px; opacity: 0; /*background-color: red;*/ pointer-events: none !important;} 
+.zoom3 .CloudType1Shadow {opacity: 0.1; filter:blur(30px);}
+.zoom5 .CloudType1Shadow {opacity: 0.2; filter:blur(10px);} 
+.zoom6 .CloudType1Shadow {opacity: 0.3; filter:blur(10px);}
+
+.CloudType2Shadow {width:419px; height:427px; opacity: 0; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType2Shadow {opacity: 0.1; filter:blur(30px);}
+.zoom5 .CloudType2Shadow {opacity: 0.3; filter:blur(10px);} 
+.zoom6 .CloudType2Shadow {opacity: 0.3;}
+
+.CloudType3Shadow {width:689px; height:555px; opacity: 0.8; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType3Shadow {opacity: 0.8;}
+.zoom5 .CloudType3Shadow {opacity: 0.2;}

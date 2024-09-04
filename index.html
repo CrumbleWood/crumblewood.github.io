@@ -147,9 +147,9 @@
     // var center = {lat: 0, lng: 0};
 
     //Coordinate Finder
-    var marker = L.marker([0, 0], {draggable: true}).addTo(map);
+    /*var marker = L.marker([0, 0], {draggable: true}).addTo(map);
     marker.bindPopup('LatLng Marker').openPopup();
-    marker.on('dragend', function(e) {marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);});
+    marker.on('dragend', function(e) {marker.getPopup().setContent(marker.getLatLng().toString()).openOn(map);});*/
     
     //Markers & Icons
     var templeIconDarkblue = L.icon({
@@ -425,6 +425,8 @@
         //shadowAnchor: [4, 62],  // the same for the shadow
         
     });
+
+    // Cloud Icons & Shadows
     var iconCloud1 = L.icon({
         className: 'CloudType1',
         iconUrl: 'icons/cloud_type_1.png',
@@ -443,6 +445,49 @@
         //shadowAnchor: [4, 62],  // the same for the shadow
         //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
     });
+    var iconCloud2 = L.icon({
+        className: 'CloudType3',
+        iconUrl: 'icons/cloud_type_3.png',
+        iconSize:     [672, 540], // size of the icon
+        iconAnchor:   [336, 270], // point of the icon which will correspond to marker's location
+        //shadowUrl: 'leaf-shadow.png',
+        //shadowSize:   [50, 64], // size of the shadow
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+
+    var iconCloud1Shadow = L.icon({
+        className: 'CloudType1Shadow',
+        iconUrl: 'icons/cloud_type_1_shadow.png',
+        iconSize:     [1239, 886], // size of the icon
+        iconAnchor:   [619, 443], // point of the icon which will correspond to marker's location
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var iconCloud2Shadow = L.icon({
+        className: 'CloudType2Shadow',
+        iconUrl: 'icons/cloud_type_2_shadow.png',
+        iconSize:     [419, 427], // size of the icon
+        iconAnchor:   [208, 213], // point of the icon which will correspond to marker's location
+        //shadowUrl: 'leaf-shadow.png',
+        //shadowSize:   [50, 64], // size of the shadow
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+    var iconCloud3Shadow = L.icon({
+        className: 'CloudType3Shadow',
+        iconUrl: 'icons/cloud_type_3_shadow.png',
+        iconSize:     [689, 555], // size of the icon
+        iconAnchor:   [344, 272], // point of the icon which will correspond to marker's location
+        //shadowUrl: 'leaf-shadow.png',
+        //shadowSize:   [50, 64], // size of the shadow
+        //shadowAnchor: [4, 62],  // the same for the shadow
+        //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
+    });
+
+
+
+
     /*
     var iconZoomLayer = L.layerGroup([
         L.marker([-31.4 , 0], {icon:iconZoom})
@@ -457,24 +502,25 @@
 
     map.on('zoomend', function(){ 
 
-        // autoscale function based on css & zoom
+        // OPTION1 autoscale function based on css & zoom
         /*var newzoom = '' + (10*(map.getZoom()+2)) +'px';
         $('#map .animatedZoom').css({'width':newzoom,'height':newzoom,'background-size':newzoom + ' ' + newzoom}); 
         console.log("newzoom: "+ newzoom);
         //repeat for the other classes*/
 
-        //manual marker size based on zoom
+        // OPTION2 manual marker size based on zoom
         /*if (map.getZoom() < 6) {
             marker.setIcon(playerIcon1);
         } else {
             marker.setIcon(playerIcon2);
         }*/
 
-        //change icon size based on css
+        // OPTION3 change icon size based on css
         document.body.className = "zoom"+map.getZoom();
         
     });
     
+    // CHANGE ICON SIZE MARKER TEST
     // var marker1 = L.marker([-30 , 0], {icon:playerIcon}).addTo(map);
 
     /*
@@ -486,32 +532,33 @@
     var marker1 = new L.marker(new L.LatLng(31.4926473, 74.3759229)).addTo(cluster);
     var marker2 = new L.marker(new L.LatLng(31.4923959, 74.375927)).addTo(cluster);*/
 
-    var mistfallCity = L.marker([-35.012013, -3.88916], {icon: royalIconDarkblue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="bxs-Forest.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Mistfall</h2><p>Forest</p></b></div><a href="index.html" style="text-decoration:none"><div id="icon-block-3"><img src="bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
-        Starhaven = L.marker([-2.28409, -45.527344], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="bxs-City.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Starhaven</h2><p>City</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
-        suncrestVillage = L.marker([-35.56788, -12.65625], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        longruneOutpost = L.marker([-32.6870, 9.42627], {icon: bannerSquareOrange}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        longruneCampsite = L.marker([-34.806347, 14.15039], {icon: bannerSquareYellow}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        longruneForest = L.marker([-34.39798, 11.33789], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        damrundMill = L.marker([-37.6141, -0.83496], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        woodlandForest = L.marker([-31.12254, -9.84375], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        whilderVillage = L.marker([-36.29641, -0.96680], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        greenrollHills = L.marker([-32.02653, 6.48193], {icon: IconMountain}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        whiterockPlateau = L.marker([-36.36720, -6.74561], {icon: IconMountain}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        
-        pevanshireTower = L.marker([-45.27460, 7.16309], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        minburyKeep = L.marker([-47.30836, 2.30713], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        minburyRavine = L.marker([-45.38271, 5.97656], {icon: IconMountain}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        minwoodForest = L.marker([-42.43996, 6.59180], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        southernMinwoodForest = L.marker([-48.82037, -0.39551], {icon: IconForest}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        lostMill = L.marker([-44.43366, -6.94336], {icon: IconTemple}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        village = L.marker([-44.77775, -16.58936], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        outpost = L.marker([-44.21908, -1.27441], {icon: bannerSquareOrange}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map),
-        village = L.marker([-44.74336, -2.30713], {icon: bannerSquareBlue}).bindPopup('<b>Suncrest<br><a href="index.html" style="text-decoration:none">More info</a></b>').addTo(map);
-
+    var Mistfall = L.marker([-35.012013, -3.88916], {icon: royalIconDarkblue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-City.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Mistfall</h2><p>City</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Starhaven = L.marker([-2.28409, -45.527345], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-City.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Starhaven</h2><p>City</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Suncrest = L.marker([-35.56788, -12.65625], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Village.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Suncrest</h2><p>Village</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Whilderwide = L.marker([-36.29641, -0.96680], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Village.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Whilderwide</h2><p>Village</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Fieldcrest = L.marker([-44.77775, -16.58936], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Village.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Fieldcrest</h2><p>Village</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Grasslong = L.marker([-44.74336, -2.30713], {icon: bannerSquareBlue}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Village.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Grasslong</h2><p>Village</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Longrune = L.marker([-32.6870, 9.42627], {icon: bannerSquareOrange}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Outpost.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Longrune</h2><p>Outpost</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Longrune = L.marker([-34.806347, 14.15039], {icon: bannerSquareOrange}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Campsite.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Longrune</h2><p>Campsite</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Longrune = L.marker([-34.39798, 11.33789], {icon: bannerSquareGreen}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Forest.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Longrune</h2><p>Forest</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Greenroll = L.marker([-32.02653, 6.48193], {icon: IconMountain}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Hills.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Greenroll</h2><p>Hills</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Whiterock = L.marker([-36.36720, -6.74561], {icon: IconMountain}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Plateau.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Whiterock</h2><p>Plateau</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Pevanshire = L.marker([-45.27460, 7.16309], {icon: bannerSquareOrange}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Tower.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Pevanshire</h2><p>Tower</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Minbury = L.marker([-47.30836, 2.30713], {icon: bannerSquareOrange}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Keep.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Minbury</h2><p>Keep</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Minbury = L.marker([-45.38271, 5.97656], {icon: IconMountain}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Ravine.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Minbury</h2><p>Ravine</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Minbury = L.marker([-42.43996, 6.59180], {icon: bannerSquareGreen}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Forest.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Minbury</h2><p>Forest</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        LostMill = L.marker([-44.43366, -6.94336], {icon: bannerSquareOrange}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Landmark.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Lost Mill</h2><p>Landmark</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map),
+        Abandoned = L.marker([-44.21908, -1.27441], {icon: bannerSquareOrange}).bindPopup('<div class="info-toolbar"><div id="icon-block-1"><img src="icons/bxs-Outpost.svg" class="svg-icon"/></div><div id="icon-block-2"><b><h2>Abandoned</h2><p>Outpost</p></b></div><a href="index.html style="text-decoration:none"><div id="icon-block-3"><img src="icons/bx-right-arrow-alt.svg" class="svg-icon"/></div></div></a>').addTo(map);
+                    
     //var center = {lat: 0, lng: 0};
     var CloudMarker1 = L.Marker.parallax({lat: -30, lng: 0},{icon: iconCloud2, parallaxZoffset: 4096}).addTo(map),
         CloudMarker2 = L.Marker.parallax({lat: -41, lng: -16},{icon: iconCloud2, parallaxZoffset: 4096}).addTo(map),
         CloudMarker3 = L.Marker.parallax({lat: -49, lng: 5},{icon: iconCloud2, parallaxZoffset: 4096}).addTo(map),
+        CloudMarker6 = L.Marker.parallax({lat: -30, lng: 0},{icon: iconCloud2Shadow, parallaxZoffset: 512}).addTo(map),
+        CloudMarker7 = L.Marker.parallax({lat: -41, lng: -16},{icon: iconCloud2Shadow, parallaxZoffset: 512}).addTo(map),
+        CloudMarker8 = L.Marker.parallax({lat: -49, lng: 5},{icon: iconCloud2Shadow, parallaxZoffset: 512}).addTo(map),
+
+        CloudMarker9 = L.Marker.parallax({lat: -49, lng: -13},{icon: iconCloud1Shadow, parallaxZoffset: 512}).addTo(map),
         CloudMarker4 = L.Marker.parallax({lat: -49, lng: -13},{icon: iconCloud1, parallaxZoffset: 16384}).addTo(map),
         CloudMarker5 = L.Marker.parallax({lat: -30, lng: 0},{icon: iconCloud1, parallaxZoffset: 32768}).addTo(map);
     //L.Marker.parallax(center,{ parallaxZoffset: 8192}).addTo(map);
