@@ -445,7 +445,7 @@
         //shadowAnchor: [4, 62],  // the same for the shadow
         //popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
     });
-    var iconCloud2 = L.icon({
+    var iconCloud3 = L.icon({
         className: 'CloudType3',
         iconUrl: 'icons/cloud_type_3.png',
         iconSize:     [672, 540], // size of the icon
@@ -557,6 +557,12 @@
         CloudMarker6 = L.Marker.parallax({lat: -30, lng: 0},{icon: iconCloud2Shadow, parallaxZoffset: 512}).addTo(map),
         CloudMarker7 = L.Marker.parallax({lat: -41, lng: -16},{icon: iconCloud2Shadow, parallaxZoffset: 512}).addTo(map),
         CloudMarker8 = L.Marker.parallax({lat: -49, lng: 5},{icon: iconCloud2Shadow, parallaxZoffset: 512}).addTo(map),
+
+        CloudMarker10 = L.Marker.parallax({lat: -42.43996, lng: 6.59180},{icon: iconCloud3, parallaxZoffset: 2056}).addTo(map),
+        CloudMarker11 = L.Marker.parallax({lat: -42.43996, lng: 6.59180},{icon: iconCloud3Shadow, parallaxZoffset: 512}).addTo(map),
+
+        CloudMarker12 = L.Marker.parallax({lat: -43, lng: 6.8},{icon: iconCloud1, parallaxZoffset: 8192}).addTo(map),
+        CloudMarker13 = L.Marker.parallax({lat: -43, lng: 6.8},{icon: iconCloud1, parallaxZoffset: 512}).addTo(map),
 
         CloudMarker9 = L.Marker.parallax({lat: -49, lng: -13},{icon: iconCloud1Shadow, parallaxZoffset: 512}).addTo(map),
         CloudMarker4 = L.Marker.parallax({lat: -49, lng: -13},{icon: iconCloud1, parallaxZoffset: 16384}).addTo(map),

@@ -126,17 +126,17 @@ Sizeable Icons
 .zoom5 .CloudType1 {opacity: 0.3;}
 .zoom6 .CloudType1 {opacity: 0.2;}
 
-.CloudType2 {width:458px; height:427px; opacity: 0.6; /*background-color: blue;*/ pointer-events: none !important;}
-.zoom3 .CloudType2 {opacity: 0.6;}
-.zoom4 .CloudType2 {opacity: 0.4;}
+.CloudType2 {width:458px; height:427px; opacity: 0.3; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType2 {opacity: 0.3;}
+.zoom4 .CloudType2 {opacity: 0.3;}
 .zoom5 .CloudType2 {opacity: 0.4;}
 .zoom6 .CloudType2 {opacity: 0.4;}
 
-.CloudType3 {width:672px; height:540px; opacity: 0.7; /*background-color: blue;*/ pointer-events: none !important;}
-.zoom3 .CloudType3 {opacity: 0.6;}
-.zoom4 .CloudType3 {opacity: 0.5;}
-.zoom5 .CloudType3 {opacity: 0.4;}
-.zoom6 .CloudType3 {opacity: 0.3;}
+.CloudType3 {width:672px; height:540px; opacity: 0.2; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType3 {opacity: 0.2;}
+.zoom4 .CloudType3 {opacity: 0.2;}
+.zoom5 .CloudType3 {opacity: 0.3;}
+.zoom6 .CloudType3 {opacity: 0.4;}
 
 /* Cloud Icons Shadows Size Change */
 .CloudType1Shadow {width:1239px; height:886px; opacity: 0; /*background-color: red;*/ pointer-events: none !important;} 
@@ -150,5 +150,6 @@ Sizeable Icons
 .zoom6 .CloudType2Shadow {opacity: 0.2;}
 
 .CloudType3Shadow {width:689px; height:555px; opacity: 0; /*background-color: blue;*/ pointer-events: none !important;}
-.zoom3 .CloudType3Shadow {opacity: 0.1;}
-.zoom5 .CloudType3Shadow {opacity: 0.2;}
+.zoom3 .CloudType3Shadow {opacity: 0;}
+.zoom5 .CloudType3Shadow {opacity: 0.1;}
+.zoom6 .CloudType3Shadow {opacity: 0.1;}
