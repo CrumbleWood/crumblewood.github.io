@@ -126,10 +126,10 @@ Sizeable Icons
 .zoom5 .CloudType1 {opacity: 0.3;}
 .zoom6 .CloudType1 {opacity: 0.2;}
 
-.CloudType2 {width:458px; height:427px; opacity: 0.3; /*background-color: blue;*/ pointer-events: none !important;}
-.zoom3 .CloudType2 {opacity: 0.3;}
-.zoom4 .CloudType2 {opacity: 0.3;}
-.zoom5 .CloudType2 {opacity: 0.4;}
+.CloudType2 {width:458px; height:427px; opacity: 0.1; /*background-color: blue;*/ pointer-events: none !important;}
+.zoom3 .CloudType2 {opacity: 0.1;}
+.zoom4 .CloudType2 {opacity: 0.2;}
+.zoom5 .CloudType2 {opacity: 0.3;}
 .zoom6 .CloudType2 {opacity: 0.4;}
 
 .CloudType3 {width:672px; height:540px; opacity: 0.2; /*background-color: blue;*/ pointer-events: none !important;}
